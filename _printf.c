@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int (*arg_formater)(va_list args), i, count = 0;
+	int (*arg_formater)(va_list args), i, ret_val, count = 0;
 
 	if (format == NULL)
 		return (-1);
@@ -36,7 +36,10 @@ int _printf(const char *format, ...)
 				count += 2;
 				continue;
 			}
-			count += arg_formater(args);
+			ret_val = arg_formater(args);
+			if (ret_val < 0)
+				return (-1);
+			count += ret_val;
 			continue;
 		}
 		write_chr(format[i]);

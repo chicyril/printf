@@ -18,6 +18,10 @@ int (*format_specifier(char spec))(va_list args)
 		{'o', cnvrt_to_oct},
 		{'x', cnvrt_to_hex},
 		{'X', cnvrt_to_heX},
+		{'S', print_cust_str},
+		{'p', print_addr},
+		{'r', print_rev_str},
+		{'R', print_rot13},
 		{'\0', NULL}
 	};
 	int i = 0;
